@@ -14,10 +14,10 @@ struct Node {
         return (links[ch - 'a'] != NULL); 
     }
     Node* get(char ch) {
-        return links[ch-'a']; 
+        return links[ch-'a'];             // return where char is this pointing to 
     }
     void put(char ch, Node* node) {
-        links[ch-'a'] = node; 
+        links[ch-'a'] = node;           // (a)pple => a point to new trie
     }
     void setEnd() {
         flag = true; 
@@ -41,7 +41,8 @@ public:
             if(!node->containsKey(word[i])) {
                 node->put(word[i], new Node()); 
             }
-            node = node->get(word[i]); 
+            
+            node = node->get(word[i]);   // move to the reference trie
         }
         node->setEnd(); 
     }
