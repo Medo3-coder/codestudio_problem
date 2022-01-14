@@ -11,7 +11,7 @@ struct Node {
     bool flag = false; 
     
     bool containsKey(char ch) {
-        return (links[ch - 'a'] != NULL); 
+        return (links[ch - 'a'] != NULL);      // a = 0 , p = 1 , c = 2 and so on ......
     }
     Node* get(char ch) {
         return links[ch-'a'];             // return where char is this pointing to 
