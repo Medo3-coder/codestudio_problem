@@ -36,7 +36,7 @@ public:
     
     /** Inserts a word into the trie. */
     void insert(string word) {
-        Node *node = root;
+        Node *node = root;            // initial dummy node stand on the root
         for(int i = 0;i<word.size();i++) {
             if(!node->containsKey(word[i])) {
                 node->put(word[i], new Node()); 
@@ -49,7 +49,7 @@ public:
     
     /** Returns if the word is in the trie. */
     bool search(string word) {
-        Node *node = root; 
+        Node *node = root;                     // initial dummy node stand on the root
         for(int i = 0;i<word.size();i++) {
             if(!node->containsKey(word[i])) {
                 return false; 
@@ -64,7 +64,7 @@ public:
     
     /** Returns if there is any word in the trie that starts with the given prefix. */
     bool startsWith(string prefix) {
-        Node *node = root; 
+        Node *node = root;                       // initial dummy node stand on the root
         for(int i = 0;i<prefix.size();i++) {
             if(!node->containsKey(prefix[i])) {
                 return false; 
