@@ -1,5 +1,64 @@
+/////////////----------------------- using trie    
+
+//----------- tc -> O(N2)
 
 
+
+struct Node {
+    Node *links[26] ; 
+    bool flag = false ;
+    
+    bool containKey(char ch)
+    {
+        return (links[ch - 'a'] != NULL);
+    }
+    
+    Node *get(char ch)
+    {
+        return links[ch - 'a'] ;  // where is this point to
+    }
+    
+    void put(char ch , Node *node)    //create new refernce node 
+    {
+         links[ch - 'a'] = node ; // pass a and create new trie 
+    }
+    
+    bool isEnd()
+    {
+        return flag ;
+    }
+    
+    bool setEnd()
+    {
+        flag = true ;
+    }
+};
+
+
+int countDistinctSubstrings(string &s)
+{
+    Node *root = new Node();
+    int count = 0 ;
+    
+    int n = s.size();
+    
+    for(int i = 0 ; i < n ; i++)
+    {
+        Node *node = root ;
+        for(int j = i ; j < n ; j++)
+        {
+            if(!node->containKey(s[j]))
+            {
+                node->put(s[j] , new Node());
+                count++;
+            }
+            node = node->get(s[j]);
+        } 
+    }
+        
+    return count + 1 ;
+
+}
 
 
 
